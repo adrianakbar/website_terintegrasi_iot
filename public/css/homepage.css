@@ -1,0 +1,93 @@
+.carousel-item {
+    height: 100vh;
+}
+
+.carousel-image1 {
+    margin-left: 50px;
+    width: 500px;
+    margin-top: 270px;
+}
+
+.carousel-image2 {
+    margin-left: 50px;
+    width: 500px;
+    margin-top: 210px;
+    border-radius: 30px;
+}
+
+.caption1 {
+    bottom: 140px;
+    left: 5%;
+    margin-left: 20px;
+}
+
+.caption2 {
+    bottom: 150px;
+    left: 5%;
+    margin-left: 20px;
+}
+
+.caption1 h5 {
+    font-size: 40px;
+    margin-top: 25px;
+    color: #515646;
+    font-weight: 700;
+    text-align: left;
+}
+
+.caption2 h5 {
+    font-size: 40px;
+    margin-top: 25px;
+    color: #515646;
+    font-weight: 700;
+    text-align: left;
+}
+
+.caption1 h5 span {
+    color: #CDC9B7;
+}
+
+.caption2 h5 span {
+    color: #CDC9B7;
+}
+
+.caption1 p {
+    width: 50%;
+    font-size: 17px;
+    line-height: 1.8;
+    color: black;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.caption2 p {
+    width: 50%;
+    font-size: 17px;
+    line-height: 1.8;
+    color: black;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.caption1 a {
+    font-weight: bold;
+    text-decoration: none;
+    background: #515646;
+    padding: 5px 20px;
+    display: inline-block;
+    color: white;
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.caption1 a:hover {
+    background-color: #75796b;
+}
+
+.buttoncarousel {
+    width: 75px;
+}
+
+.fa-solid {
+    color: #515646;
+}
