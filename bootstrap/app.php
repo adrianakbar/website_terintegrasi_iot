@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             '/owner/datakelembaban'
         ]);
+        $middleware->alias([
+            'DataTables' => Yajra\DataTables\Facades\DataTables::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

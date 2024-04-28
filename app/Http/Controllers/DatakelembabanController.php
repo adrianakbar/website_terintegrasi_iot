@@ -6,6 +6,7 @@ use App\Models\Datakelembaban;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
 class DatakelembabanController extends Controller
 {
@@ -16,7 +17,7 @@ class DatakelembabanController extends Controller
 
         $user = Auth::user();
 
-        return view('general.datakelembaban', compact('dataKelembaban', 'user'));
+        return view('general.datakelembaban', compact('user', 'dataKelembaban'));
     }
 
     public function sensordata(Request $request)
@@ -27,7 +28,11 @@ class DatakelembabanController extends Controller
         if ($kelembaban !== null) {
             $sensorData = new Datakelembaban();
             $sensorData->kelembaban = $kelembaban;
-            $sensorData->status = 'Belum Diganti'; // Atau nilai status yang sesuai
+            if ($kelembaban > 40) {
+                $sensorData->status = 'Sudah Diganti'; // Atau nilai status yang sesuai
+            } else {
+                $sensorData->status = 'Belum Diganti'; // Atau nilai status yang sesuai
+            }
             $sensorData->save();
 
             return response()->json(['message' => 'Data tersimpan dengan sukses'], 200);
@@ -40,5 +45,17 @@ class DatakelembabanController extends Controller
     {
         $kelembabanterbaru = Datakelembaban::latest()->value('kelembaban'); // Misalnya, mendapatkan kelembaban terbaru dari database
         return response()->json(['kelembabanterbaru' => $kelembabanterbaru]);
+    }
+
+    function datatabel()
+    {
+        $datatabel = Datakelembaban::all();
+        return response()->json(['datatabel' => $datatabel]);
+    }
+
+    function datakaryawanview()
+    {
+        $user = Auth::user();
+        return view('general.datakaryawan', compact('user'));
     }
 }

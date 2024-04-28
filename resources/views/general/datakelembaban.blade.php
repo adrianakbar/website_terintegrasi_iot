@@ -12,6 +12,8 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="{{ asset('css/datakelembaban.css') }}" rel="stylesheet">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {
@@ -28,12 +30,12 @@
                 var options = {
                     width: 600,
                     height: 300,
-                    redFrom: 90,
+                    redFrom: 70,
                     redTo: 100,
-                    yellowFrom: 75,
+                    yellowFrom: 40,
                     yellowTo: 90,
                     greenFrom: 0,
-                    greenTo: 75,
+                    greenTo: 40,
                     minorTicks: 5,
                     max: 100 // Set maximum value to 100%
                 };
@@ -51,11 +53,12 @@
                 // AJAX function to fetch data from the server
                 function fetchDataAndUpdateGauge() {
                     $.ajax({
-                        url: '/owner/speedometer', // URL to your route that fetches kelembaban data
+                        url: '/dataspeedometer', // URL to your route that fetches kelembaban data
                         type: 'GET',
                         success: function(response) {
                             updateGauge(response
-                                .kelembabanterbaru); // Assuming the response is in JSON format with a 'kelembabanterbaru' field
+                                .kelembabanterbaru
+                            ); // Assuming the response is in JSON format with a 'kelembabanterbaru' field
                         },
                         error: function(xhr, status, error) {
                             console.error('Error fetching data:', error);
@@ -63,7 +66,7 @@
                     });
                 }
                 fetchDataAndUpdateGauge();
-                setInterval(fetchDataAndUpdateGauge, 2000); // Fetch data every 5 seconds (adjust as needed)
+                setInterval(fetchDataAndUpdateGauge, 5000); // Fetch data every 5 seconds (adjust as needed)
             }
         </script>
     </head>
@@ -97,7 +100,7 @@
                                 <a class="nav-link mx-lg-3" href="#">List Tugas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-lg-3" href="#">Data Karyawan</a>
+                                <a class="nav-link mx-lg-3" href="/owner/datakaryawan">Data Karyawan</a>
                             </li>
                         </ul>
                     </div>
@@ -144,7 +147,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <table class="table tabelbiasa" id="tabelkelembaban">
+                    <table class="table tabelbiasa" id="tabelawal">
                         <thead>
                             <tr>
                                 <th scope="col" colspan="3" style="background-color: #515646" class="text-light">
@@ -155,21 +158,84 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @foreach ($dataKelembaban as $kelembaban)
-                                <tr>
-                                    <td>{{ $kelembaban->kelembaban }}%</td>
-                                    <td>{{ date('j F Y', strtotime($kelembaban->date)) }}</td>
-                                    <!-- Menampilkan tanggal -->
-                                    <td>{{ date('H:i', strtotime($kelembaban->date)) }}</td>
-                                    <!-- Menampilkan waktu -->
-                                    <td>{{ $kelembaban->status }}</td>
-                                </tr>
-                            @endforeach
+                            <script>
+                                $(document).ready(function() {
+                                    // Fungsi untuk memuat data kelembaban melalui AJAX
+                                    function tabelawal() {
+                                        $.ajax({
+                                            url: '/datatabel',
+                                            method: 'GET',
+                                            dataType: 'json',
+                                            success: function(response) {
+                                                // Hapus semua baris kecuali header
+                                                $('#tabelawal tbody').empty();
+
+                                                for (var i = 0; i < response.datatabel.length; i++) { // Mulai dari data terbaru
+                                                    var data = response.datatabel[i];
+                                                    // Format tanggal dan jam menggunakan moment.js
+                                                    var formattedDate = moment(data.date).format('D MMMM YYYY');
+                                                    var formattedTime = moment(data.date).format('HH:mm');
+                                                    if (data.kelembaban >= 40) {
+                                                        // Buat baris tabel dengan latar belakang merah untuk menunjukkan kelembaban tinggi
+                                                        var row = '<tr>' +
+                                                            '<td style="background-color: red; color: white;">' + data
+                                                            .kelembaban + '%</td>' +
+                                                            '<td style="background-color: red; color: white;">' +
+                                                            formattedDate + '</td>' +
+                                                            '<td style="background-color: red; color: white;">' +
+                                                            formattedTime + '</td>' +
+                                                            '<td style="background-color: red; color: white;">' + data.status +
+                                                            '</td>' +
+                                                            '</tr>';
+                                                        $('#tabelawal tbody').prepend(row); // Tambahkan di awal tabel
+                                                    } else {
+                                                        // Buat baris tabel biasa untuk kelembaban normal
+                                                        var row = '<tr>' +
+                                                            '<td>' + data.kelembaban + '%</td>' +
+                                                            '<td>' + formattedDate + '</td>' +
+                                                            '<td>' + formattedTime + '</td>' +
+                                                            '<td>' + data.status + '</td>' +
+                                                            '</tr>';
+                                                        $('#tabelawal tbody').prepend(row); // Tambahkan di awal tabel
+                                                    }
+                                                }
+                                            },
+                                            error: function(xhr, status, error) {
+                                                console.error(xhr.responseText);
+                                            }
+                                        });
+                                    }
+
+                                    // Memanggil fungsi untuk memuat data saat halaman dimuat
+                                    tabelawal();
+                                    setInterval(tabelawal, 5000);
+                                });
+                            </script>
                         </tbody>
                     </table>
                 </div>
 
+
+
+
                 <!-- Modal -->
+                <div class="modal fade" id="notifikasilembab" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="notificationModalLabel">Peringatan Kelembaban</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Sekam sudah lembab. Waktunya diganti!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -180,26 +246,68 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <table class="table tabelmodal" id="tabelkelembaban">
+                                <table class="table tabelmodal" id="tabelmodal">
                                     <tbody class="text-center">
-                                        <tr>
-                                            @foreach ($dataKelembaban as $kelembaban)
-                                        <tr>
-                                            <td>{{ $kelembaban->kelembaban }}%</td>
-                                            <td>{{ date('j F Y', strtotime($kelembaban->date)) }}</td>
-                                            <!-- Menampilkan tanggal -->
-                                            <td>{{ date('H:i', strtotime($kelembaban->date)) }}</td>
-                                            <!-- Menampilkan waktu -->
-                                            <td>{{ $kelembaban->status }}</td>
-                                        </tr>
-                                        @endforeach
-                                        </tr>
+                                        <script>
+                                            $(document).ready(function() {
+                                                // Fungsi untuk memuat data kelembaban melalui AJAX
+                                                function tabelmodal() {
+                                                    $.ajax({
+                                                        url: '/datatabel',
+                                                        method: 'GET',
+                                                        dataType: 'json',
+                                                        success: function(response) {
+                                                            // Hapus semua baris kecuali header
+                                                            $('#tabelmodal tbody').empty();
+
+                                                            // Tampilkan semua data tanpa batasan
+                                                            for (var i = 0; i < response.datatabel.length; i++) {
+                                                                var data = response.datatabel[i];
+                                                                // Format tanggal dan jam menggunakan moment.js
+                                                                var formattedDate = moment(data.date).format('D MMMM YYYY');
+                                                                var formattedTime = moment(data.date).format('HH:mm');
+                                                                if (data.kelembaban >= 40) {
+                                                                    var row = '<tr>' +
+                                                                        '<td style="background-color: red; color: white;">' + data
+                                                                        .kelembaban + '%</td>' +
+                                                                        '<td style="background-color: red; color: white;">' +
+                                                                        formattedDate + '</td>' +
+                                                                        '<td style="background-color: red; color: white;">' +
+                                                                        formattedTime + '</td>' +
+                                                                        // Ambil bagian waktu saja
+                                                                        '<td style="background-color: red; color: white;">' + data.status +
+                                                                        '</td>' +
+                                                                        '</tr>';
+                                                                    $('#tabelmodal tbody').prepend(row);
+                                                                } else {
+                                                                    var row = '<tr>' +
+                                                                        '<td>' + data.kelembaban + '%</td>' +
+                                                                        '<td>' + formattedDate + '</td>' +
+                                                                        '<td>' + formattedTime + '</td>' + // Ambil bagian waktu saja
+                                                                        '<td>' + data.status + '</td>' +
+                                                                        '</tr>';
+                                                                    $('#tabelmodal tbody').prepend(row);
+                                                                }
+                                                            }
+                                                        },
+                                                        error: function(xhr, status, error) {
+                                                            console.error(xhr.responseText);
+                                                        }
+                                                    });
+                                                }
+
+                                                // Memanggil fungsi untuk memuat data saat halaman dimuat
+                                                tabelmodal();
+                                                setInterval(tabelmodal, 5000);
+                                            });
+                                        </script>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Modal end -->
 
 
                 <div class="col-md-6">
@@ -211,7 +319,6 @@
         <!-- content end -->
 
         <script src="{{ asset('js/datakelembaban.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>

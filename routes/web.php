@@ -21,13 +21,15 @@ Route::post('/lupapassword', [ResetpasswordController::class, 'reset']);
 
 Route::post('/owner/datakelembaban', [DatakelembabanController::class, 'sensordata']);
 
+
 Route::middleware(['auth'])->group(function() {
     
     
     Route::get('/owner/datakelembaban', [DatakelembabanController::class, 'datakelembabanview']);
     Route::get('/kepalakandang/datakelembaban', [DatakelembabanController::class, 'datakelembabanview']);
 
-    Route::get('/owner/speedometer', [DatakelembabanController::class, 'speedometer']);
+    Route::get('/dataspeedometer', [DatakelembabanController::class, 'speedometer']);
+    Route::get('/datatabel', [DatakelembabanController::class, 'datatabel']);
     
     Route::get('/owner/profil', [ProfilController::class, 'profilview']);
     Route::get('/kepalakandang/profil', [ProfilController::class, 'profilview']);
@@ -35,6 +37,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/owner/profil/gantiprofil', [ProfilController::class, 'gantiprofilview']);
     Route::post('/owner/profil/gantiprofil', [ProfilController::class, 'validation']);
 
+    Route::get('/owner/datakaryawan', [DatakelembabanController::class, 'datakaryawanview']);
 
     Route::get('/logout', [LoginController::class, 'logout']);
 });
