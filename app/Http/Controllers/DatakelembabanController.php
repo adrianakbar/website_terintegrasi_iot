@@ -10,14 +10,24 @@ use Yajra\DataTables\DataTables;
 
 class DatakelembabanController extends Controller
 {
-    function datakelembabanview()
+    function datakelembabanview_owner()
     {
         // Ambil data dari MySQL
         $dataKelembaban = Datakelembaban::all();
 
         $user = Auth::user();
 
-        return view('general.datakelembaban', compact('user', 'dataKelembaban'));
+        return view('owner.datakelembaban', compact('user', 'dataKelembaban'));
+    }
+
+    function datakelembabanview_kepalakandang()
+    {
+        // Ambil data dari MySQL
+        $dataKelembaban = Datakelembaban::all();
+
+        $user = Auth::user();
+
+        return view('kepalakandang.datakelembaban', compact('user', 'dataKelembaban'));
     }
 
     public function sensordata(Request $request)
@@ -28,7 +38,7 @@ class DatakelembabanController extends Controller
         if ($kelembaban !== null) {
             $sensorData = new Datakelembaban();
             $sensorData->kelembaban = $kelembaban;
-            if ($kelembaban > 40) {
+            if ($kelembaban > 20) {
                 $sensorData->status = 'Sudah Diganti'; // Atau nilai status yang sesuai
             } else {
                 $sensorData->status = 'Belum Diganti'; // Atau nilai status yang sesuai
@@ -51,11 +61,5 @@ class DatakelembabanController extends Controller
     {
         $datatabel = Datakelembaban::all();
         return response()->json(['datatabel' => $datatabel]);
-    }
-
-    function datakaryawanview()
-    {
-        $user = Auth::user();
-        return view('general.datakaryawan', compact('user'));
     }
 }

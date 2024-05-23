@@ -38,11 +38,11 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-5">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-3" aria-current="page" href="/owner/datakelembaban">Data
+                            <a class="nav-link mx-lg-3" aria-current="page" href="/kepalakandang/datakelembaban">Data
                                 Kelembaban</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-3" href="/owner/listtugas">List Tugas</a>
+                            <a class="nav-link mx-lg-3" href="/kepalakandang/listtugas">List Tugas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-3 active" href="">Data Karyawan</a>
@@ -64,7 +64,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item isidropdown1" href="/owner/profil"><img
+                            <a class="dropdown-item isidropdown1" href="/kepalakandang/profil"><img
                                     src="{{ asset('image/profile.png') }}" alt=""
                                     width="30px">&nbsp&nbspProfile
                                 <span>></span>
@@ -89,9 +89,8 @@
 
     {{-- content --}}
     <div class="container-fluid container-content">
-        <div class="row">
             <!-- Left column for cards -->
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="row">
                     @foreach ($karyawan as $item)
                         <div class="col-md-4 mb-4">
@@ -110,37 +109,13 @@
                                         <p class="card-text"><strong>No hp
                                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</strong> {{ $item->no_hp }}
                                         </p>
-                                    </div>
-                                    <div class="text-center buttondicard">
-                                        <div class="row justify-content-between">
-                                            <div class="col-auto">
-                                                <a href="#" class="btn btn-info update-btn" data-id="{{ $item->id_karyawan }}"
-                                                    data-bs-toggle="modal" data-bs-target="#updatemodal" id="updatebutton">Update</a>
-                                            </div>
-                                            <div class="col-auto">
-                                                <a href="#" class="btn btn-danger delete-btn" data-id="{{ $item->id_karyawan }}"
-                                                    id="deletebutton">Delete</a>
-                                            </div>
-                                        </div>
-                                    </div>                                    
+                                    </div>                                   
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
-
-
-            <!-- Right column for button -->
-            <div class="col-md-2">
-                <div class="row">
-                    <div class="col">
-                        <button type="button" class="buttontambah" data-bs-toggle="modal"
-                            data-bs-target="#createmodal">Tambah</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Modal update -->

@@ -7,22 +7,40 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
-    function profilview()
+    function profilview_owner()
     {
         // Ambil informasi pengguna yang telah login
         $user = Auth::user();
 
         // Meneruskan variabel $user ke dalam view
-        return view('general.profil', compact('user'));
+        return view('owner.profil', compact('user'));
     }
 
-    function gantiprofilview()
+    function profilview_kepalakandang()
     {
         // Ambil informasi pengguna yang telah login
         $user = Auth::user();
 
         // Meneruskan variabel $user ke dalam view
-        return view('general.gantiprofil', compact('user'));
+        return view('kepalakandang.profil', compact('user'));
+    }
+
+    function gantiprofilview_owner()
+    {
+        // Ambil informasi pengguna yang telah login
+        $user = Auth::user();
+
+        // Meneruskan variabel $user ke dalam view
+        return view('owner.gantiprofil', compact('user'));
+    }
+
+    function gantiprofilview_kepalakandang()
+    {
+        // Ambil informasi pengguna yang telah login
+        $user = Auth::user();
+
+        // Meneruskan variabel $user ke dalam view
+        return view('kepalakandang.gantiprofil', compact('user'));
     }
 
     function validation(Request $request)

@@ -34,14 +34,14 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-5">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-3" aria-current="page" href="/owner/datakelembaban">Data
+                            <a class="nav-link mx-lg-3" aria-current="page" href="/kepalakandang/datakelembaban">Data
                                 Kelembaban</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-3" href="/owner/listtugas">List Tugas</a>
+                            <a class="nav-link mx-lg-3" href="/kepalakandang/listtugas">List Tugas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-3" href="/owner/datakaryawan">Data Karyawan</a>
+                            <a class="nav-link mx-lg-3" href="/kepalakandang/datakaryawan">Data Karyawan</a>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item isidropdown1" href="/owner/profil"><img
+                            <a class="dropdown-item isidropdown1" href="/kepalakandang/profil"><img
                                     src="{{ asset('image/profile.png') }}" alt=""
                                     width="30px">&nbsp&nbspProfile
                                 <span>></span>
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="">
-                                <button type="button" class="btn-batal"><a href="/owner/profil">Batal</a></button>
+                                <button type="button" class="btn-batal"><a href="/kepalakandang/profil">Batal</a></button>
                                 <input type="submit" class="submit" value="Konfirmasi Perubahan">
                             </div>
                         </form>

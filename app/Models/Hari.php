@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Datakelembaban extends Model
+class Hari extends Model
 {
-    protected $table = 'datakelembaban';
+    use HasFactory;
+
+    protected $table = 'hari';
 
     protected $fillable = [
-        'kelembaban',
-        'date',
-        'status',
+        'hari',
     ];
 
     // Jika Anda ingin menonaktifkan timestamp
     public $timestamps = false;
+
+    // Definisikan relasi ke model Listtugas
+    public function listtugas()
+    {
+        return $this->hasMany(Listtugas::class, 'id_hari');
+    }
 }

@@ -120,91 +120,71 @@ body {
 /* header end */
 
 /* content */
-.containersemua {
+.isicontent {
     margin-top: 80px;
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 40px;
 }
 
-.containertabel {
-    border-radius: 10px;
-    border: 1px solid #ccc;
+.card-body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
-}
-
-.containerspeedometer {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
-}
-
-.containercuaca {
-    margin-top: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
-}
-
-.speedometer {
-    margin-bottom: 15px;
-    margin-left: 10px;
-}
-
-.tabelbiasa {
-    border: 1px solid #ccc;
-    width: 550px;
+    width: 350px;
+    margin-top: 15px;
+    border-radius: 5px;
     margin-left: 12px;
 }
 
-.tabelmodal {
-    border: 1px solid #ccc;
+.wrapper:hover {
+    transform: translateY(-5px);
 }
 
-.tdatas {
-    font-size: 12px;
-}
-
-.tdatas a {
-    text-decoration: none;
-    color: white;
-}
-
-.tdatas a:hover {
-    text-decoration: underline;
-}
-
-.table thead {
-    background-color: #515646;
-}
-
-.judultabel {
-    margin-top: 15px;
-    text-align: center;
+.namahari {
     background-color: #CDC9B7;
     padding: 10px;
     border-radius: 5px;
 }
 
-.judultabel i {
-    margin-right: 7px;
+.namahari i {
+    margin-top: 3px;
 }
 
-.weather-icon img {
-    width: 150px;
+.judulcard {
+    font-size: large;
 }
 
-.celcius {
-    font-size: 30px;
-    font-weight: bold;
-    color: #515646;
+.judultugas {
+    font-weight: 550;
 }
 
-.persensekam {
-    margin-top: 30px;
-    margin-left: 60px;
-    font-weight: bold;
+.listjudultugas {
+    margin-top: 15px;
+}
+
+.btn-tambah {
+    margin-left: 40px;
+    background-color: #515646;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 90px;
+    border-radius: 7px;
+    margin-top: 16px;
+}
+
+.btn-tambah:hover {
+    background-color: #5f6159;
+    color: white;
+}
+
+.checkbox {
+    margin-left: 88%;
+}
+
+.ukurancheckbox {
+    width: 16px;
+    height: 16px;
+}
+
+.fa-trash {
     color: red;
-    font-size: 60px;
 }
+
 /* content end */

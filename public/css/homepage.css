@@ -9,6 +9,8 @@
 }
 
 .carousel-image2 {
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
     margin-left: 50px;
     width: 500px;
     margin-top: 210px;

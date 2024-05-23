@@ -8,6 +8,7 @@ body {
     background-color: #cdc9b7;
     height: 80px;
     padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
 }
 
 .login-button {
@@ -120,91 +121,98 @@ body {
 /* header end */
 
 /* content */
-.containersemua {
+.alert {
+    width: 600px;
+}
+
+.content {
     margin-top: 80px;
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 40px;
+    padding-top: 50px;
+    padding-left: 90px;
+    padding-right: 90px;
+    background-color: #cdc9b7;
+    min-height: 88vh;
 }
 
-.containertabel {
+.containerprofil {
+    padding-bottom: 70px;
     border-radius: 10px;
     border: 1px solid #ccc;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
+    background-color: white;
 }
 
-.containerspeedometer {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
+.gambar {
+    margin-top: 130px;
+    margin-left: 150px;
 }
 
-.containercuaca {
-    margin-top: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
-}
-
-.speedometer {
-    margin-bottom: 15px;
+.alert {
     margin-left: 10px;
+    width: 500px;
 }
 
-.tabelbiasa {
-    border: 1px solid #ccc;
-    width: 550px;
-    margin-left: 12px;
+.formgantiprofil {
+    margin-left: 40px;
+    margin-top: 50px;
 }
 
-.tabelmodal {
-    border: 1px solid #ccc;
+
+.button a {
+    font-weight: 500;
+    text-decoration: none;
+    background: #515646;
+    padding: 5px 20px;
+    display: inline-block;
+    color: white;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-right: 20px;
 }
 
-.tdatas {
-    font-size: 12px;
+.button a:hover {
+    background-color: #75796b;
 }
 
-.tdatas a {
+.submit {
+    font-weight: 500;
+    color: white;
+    margin-top: 30px;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #515646;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.submit:hover {
+    background-color: #75796b;
+}
+
+.form-control {
+    border-width: 2px;
+}
+
+.btn-batal {
+    font-weight: 500;
+    color: white;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #515646;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+
+.btn-batal a {
     text-decoration: none;
     color: white;
 }
 
-.tdatas a:hover {
-    text-decoration: underline;
+.btn-batal:hover {
+    background-color: #75796b;
 }
 
-.table thead {
-    background-color: #515646;
-}
-
-.judultabel {
-    margin-top: 15px;
-    text-align: center;
-    background-color: #CDC9B7;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.judultabel i {
-    margin-right: 7px;
-}
-
-.weather-icon img {
-    width: 150px;
-}
-
-.celcius {
-    font-size: 30px;
-    font-weight: bold;
-    color: #515646;
-}
-
-.persensekam {
-    margin-top: 30px;
-    margin-left: 60px;
-    font-weight: bold;
-    color: red;
-    font-size: 60px;
-}
 /* content end */

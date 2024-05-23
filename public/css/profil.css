@@ -8,6 +8,7 @@ body {
     background-color: #cdc9b7;
     height: 80px;
     padding: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
 }
 
 .login-button {
@@ -56,24 +57,24 @@ body {
 }
 
 .isidropdown1 {
-    font-size: 14px;
+    font-size: 17px;
     width: 100%;
     display: flex;
 }
 
 .isidropdown2 {
-    font-size: 14px;
+    font-size: 17px;
     width: 100%;
     display: flex;
 }
 
 .isidropdown1 span {
-    margin-left: 65px;
+    margin-left: 120px;
     transition: transform 0.5s;
 }
 
 .isidropdown2 span {
-    margin-left: 60px;
+    margin-left: 115px;
     transition: transform 0.5s;
 }
 
@@ -94,7 +95,7 @@ body {
 }
 
 .dropdown-menu {
-    width: 180px;
+    width: 250px;
 }
 
 @media (min-width: 991px) {
@@ -126,15 +127,29 @@ body {
 
 .content {
     margin-top: 80px;
+    padding-top: 50px;
+    padding-left: 90px;
+    padding-right: 90px;
+    background-color: #cdc9b7;
+    min-height: 88vh;
+}
+
+.containerprofil {
+    padding-bottom: 75px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
+    background-color: white;
 }
 
 .gambar {
-    margin-top: 150px;
-    margin-left: 250px;
+    margin-top: 100px;
+    margin-left: 200px;
 }
 
 .form {
-    margin-top: 150px;
+    margin-top: 100px;
+    margin-left: 20px;
 }
 
 .formgantiprofil {
@@ -149,7 +164,7 @@ body {
     padding: 5px 20px;
     display: inline-block;
     color: white;
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 20px;
     margin-right: 20px;
 }
@@ -176,6 +191,27 @@ body {
 
 .form-control {
     border-width: 2px;
+}
+
+.btn-batal {
+    font-weight: 500;
+    color: white;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #515646;
+    border-radius: 20px;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+
+.btn-batal a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn-batal:hover {
+    background-color: #75796b;
 }
 
 /* content end */

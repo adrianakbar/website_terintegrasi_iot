@@ -120,91 +120,53 @@ body {
 /* header end */
 
 /* content */
-.containersemua {
-    margin-top: 80px;
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 40px;
+.container-content {
+    margin-top: 100px;
 }
 
-.containertabel {
+.card {
     border-radius: 10px;
     border: 1px solid #ccc;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
+    background-image: url('../image/backgroundlogin.jpeg');
 }
 
-.containerspeedometer {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.containercuaca {
-    margin-top: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Efek emboss */
+.card img {
+    width: 60px;
+    margin-top: 10px;
 }
 
-.speedometer {
-    margin-bottom: 15px;
-    margin-left: 10px;
+.card1 {
+    margin-left: 40px;
 }
 
-.tabelbiasa {
-    border: 1px solid #ccc;
-    width: 550px;
-    margin-left: 12px;
+.buttondicard {
+    
+    margin-top: 20px;
 }
 
-.tabelmodal {
-    border: 1px solid #ccc;
+.buttondicard a {
+    border-radius: 7px;
 }
 
-.tdatas {
-    font-size: 12px;
-}
-
-.tdatas a {
-    text-decoration: none;
-    color: white;
-}
-
-.tdatas a:hover {
-    text-decoration: underline;
-}
-
-.table thead {
+.buttontambah {
+    margin-left: 40px;
     background-color: #515646;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 90px;
+    border-radius: 7px;
 }
 
-.judultabel {
-    margin-top: 15px;
-    text-align: center;
-    background-color: #CDC9B7;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.judultabel i {
-    margin-right: 7px;
-}
-
-.weather-icon img {
-    width: 150px;
-}
-
-.celcius {
-    font-size: 30px;
-    font-weight: bold;
-    color: #515646;
-}
-
-.persensekam {
-    margin-top: 30px;
-    margin-left: 60px;
-    font-weight: bold;
-    color: red;
-    font-size: 60px;
+.buttontambah:hover {
+    background-color: #5f6159;
+    color: white;
 }
 /* content end */
