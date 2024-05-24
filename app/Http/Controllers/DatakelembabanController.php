@@ -38,7 +38,7 @@ class DatakelembabanController extends Controller
         if ($kelembaban !== null) {
             $sensorData = new Datakelembaban();
             $sensorData->kelembaban = $kelembaban;
-            if ($kelembaban > 20) {
+            if ($kelembaban >= 20) {
                 $sensorData->status = 'Sudah Diganti'; // Atau nilai status yang sesuai
             } else {
                 $sensorData->status = 'Belum Diganti'; // Atau nilai status yang sesuai

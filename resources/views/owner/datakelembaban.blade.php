@@ -31,12 +31,12 @@
             var options = {
                 width: 500,
                 height: 250,
-                redFrom: 70,
+                redFrom: 20,
                 redTo: 100,
-                yellowFrom: 40,
-                yellowTo: 90,
+                // yellowFrom: 40,
+                // yellowTo: 90,
                 greenFrom: 0,
-                greenTo: 40,
+                greenTo: 20,
                 minorTicks: 5,
                 max: 100 // Set maximum value to 100%
             };
@@ -218,23 +218,6 @@
                 </table>
             </div>
 
-            <!-- Modal alert -->
-            <div class="modal fade" id="notifikasilembab" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="notificationModalLabel">Peringatan Kelembaban</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Sekam sudah lembab. Waktunya diganti!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {{-- Modal lihatsemua --}}
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -328,7 +311,15 @@
                                         url: '/dataspeedometer', // URL to your route that fetches kelembaban data
                                         type: 'GET',
                                         success: function(response) {
-                                            document.querySelector('.persensekam').innerText = response.kelembabanterbaru + '%'; // Update the paragraph text with the kelembabanterbaru value
+                                            if (response.kelembabanterbaru >= 20) {
+                                                // Update the gauge color to red if kelembabanterbaru is greater than or equal to 20
+                                                document.querySelector('.persensekam').style.color = 'red';
+                                            } else {
+                                                // Update the gauge color to green if kelembabanterbaru is less than 20
+                                                document.querySelector('.persensekam').style.color = 'green';
+                                            }
+                                            document.querySelector('.persensekam').innerText = response.kelembabanterbaru +
+                                            '%'; // Update the paragraph text with the kelembabanterbaru value
                                         },
                                         error: function(xhr, status, error) {
                                             console.error('Error fetching data:', error);
@@ -339,7 +330,7 @@
                                 setInterval(angkaspeedometer, 5000); // Fetch data every 5 seconds (adjust as needed)
                             </script>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -382,8 +373,8 @@
                         // Panggil fetchWeatherData saat halaman dimuat pertama kali
                         fetchWeatherData();
 
-                        // Perbarui data setiap 10 menit
-                        setInterval(fetchWeatherData, 600000); // 600000ms = 10 menit
+                        // Perbarui data setiap 1 jam
+                        setInterval(fetchWeatherData, 3600000); // 3600000ms = 1 jam
                     </script>
                 </div>
             </div>

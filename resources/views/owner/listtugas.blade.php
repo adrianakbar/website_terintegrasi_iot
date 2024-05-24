@@ -161,7 +161,7 @@
                             <label for="hari" class="form-label">Hari</label>
                             <select class="form-select" id="hari" name="hari" required>
                                 <option value="" selected disabled>Pilih Hari</option>
-                                @foreach ($groupedTasks as $nama_hari => $tasks)
+                                @foreach ($hari as $nama_hari)
                                     <option value="{{ $nama_hari }}">{{ $nama_hari }}</option>
                                 @endforeach
                             </select>

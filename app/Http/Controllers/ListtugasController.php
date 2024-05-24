@@ -16,7 +16,8 @@ class ListtugasController extends Controller
         $hariDenganTugas = Listtugas::join('hari', 'listtugas.id_hari', '=', 'hari.id_hari')
             ->select('listtugas.*', 'hari.nama_hari')
             ->get();
-        return view('owner.listtugas', compact('user', 'hariDenganTugas'));
+        $hari = Hari::pluck('nama_hari');
+        return view('owner.listtugas', compact('user', 'hariDenganTugas', 'hari'));
     }
 
     function listtugasview_kepalakandang()
@@ -64,13 +65,13 @@ class ListtugasController extends Controller
     }
 
     public function updateCheckbox(Request $request)
-{
-    $task = Listtugas::find($request->id_tugas); // Replace with your model
-    if ($task) {
-        $task->checkbox = $request->checkbox;
-        $task->save();
-        return response()->json(['success' => true]);
+    {
+        $task = Listtugas::find($request->id_tugas); // Replace with your model
+        if ($task) {
+            $task->checkbox = $request->checkbox;
+            $task->save();
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false], 404);
     }
-    return response()->json(['success' => false], 404);
-}
 }

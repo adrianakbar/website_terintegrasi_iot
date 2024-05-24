@@ -214,4 +214,8 @@ body {
     background-color: #75796b;
 }
 
+.col-sm-2 {
+    width: 125px;
+}
+
 /* content end */
