@@ -192,6 +192,8 @@ body {
 
 .weather-icon img {
     width: 150px;
+    background-color: #CDC9B7;
+    border-radius: 50px;
 }
 
 .celcius {
