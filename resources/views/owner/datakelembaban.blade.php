@@ -314,6 +314,13 @@
                                             if (response.kelembabanterbaru >= 20) {
                                                 // Update the gauge color to red if kelembabanterbaru is greater than or equal to 20
                                                 document.querySelector('.persensekam').style.color = 'red';
+                                                Swal.fire({
+                                                    icon: 'warning',
+                                                    title: 'Peringatan',
+                                                    text: `Kelembaban sekam sudah mencapai ${response.kelembabanterbaru}%`,
+                                                    showConfirmButton: true,
+                                                    confirmButtonColor: "#515646",
+                                                });
                                             } else {
                                                 // Update the gauge color to green if kelembabanterbaru is less than 20
                                                 document.querySelector('.persensekam').style.color = 'green';

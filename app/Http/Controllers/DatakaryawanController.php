@@ -10,14 +10,14 @@ class DatakaryawanController extends Controller
 {
     function datakaryawanview_owner()
     {
-        $karyawan = Datakaryawan::all();
+        $karyawan = Datakaryawan::orderBy('nama_karyawan', 'asc')->get();
         $user = Auth::user();
         return view('owner.datakaryawan', compact('user', 'karyawan'));
     }
 
     function datakaryawanview_kepalakandang()
     {
-        $karyawan = Datakaryawan::all();
+        $karyawan = Datakaryawan::orderBy('nama_karyawan', 'asc')->get();
         $user = Auth::user();
         return view('kepalakandang.datakaryawan', compact('user', 'karyawan'));
     }
