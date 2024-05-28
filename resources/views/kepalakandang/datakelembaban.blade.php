@@ -67,7 +67,7 @@
                 });
             }
             fetchDataAndUpdateGauge();
-            setInterval(fetchDataAndUpdateGauge, 5000); // Fetch data every 5 seconds (adjust as needed)
+            setInterval(fetchDataAndUpdateGauge, 10000); // Fetch data every 5 seconds (adjust as needed)
         }
     </script>
 </head>
@@ -166,7 +166,7 @@
                                 // Fungsi untuk memuat data kelembaban melalui AJAX
                                 function tabelawal() {
                                     $.ajax({
-                                        url: '/datatabel',
+                                        url: '/12data',
                                         method: 'GET',
                                         dataType: 'json',
                                         success: function(response) {
@@ -211,7 +211,7 @@
 
                                 // Memanggil fungsi untuk memuat data saat halaman dimuat
                                 tabelawal();
-                                setInterval(tabelawal, 5000);
+                                setInterval(tabelawal, 10000);
                             });
                         </script>
                     </tbody>
@@ -281,7 +281,7 @@
 
                                             // Memanggil fungsi untuk memuat data saat halaman dimuat
                                             tabelmodal();
-                                            setInterval(tabelmodal, 5000);
+                                            setInterval(tabelmodal, 10000);
                                         });
                                     </script>
                                 </tbody>
@@ -327,7 +327,7 @@
                                     });
                                 }
                                 angkaspeedometer();
-                                setInterval(angkaspeedometer, 5000); // Fetch data every 5 seconds (adjust as needed)
+                                setInterval(angkaspeedometer, 10000); // Fetch data every 5 seconds (adjust as needed)
                             </script>
                         </div>
 

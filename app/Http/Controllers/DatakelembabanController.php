@@ -57,6 +57,13 @@ class DatakelembabanController extends Controller
         return response()->json(['kelembabanterbaru' => $kelembabanterbaru]);
     }
 
+    function tabelawal()
+    {
+        $datatabel = Datakelembaban::latest()->take(12)->get();
+        return response()->json(['datatabel' => $datatabel]);
+    }
+
+
     function datatabel()
     {
         $datatabel = Datakelembaban::all();

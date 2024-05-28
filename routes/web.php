@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/updatecheckbox', [ListtugasController::class, 'updateCheckbox']);
     Route::get('/dataspeedometer', [DatakelembabanController::class, 'speedometer']);
     Route::get('/datatabel', [DatakelembabanController::class, 'datatabel']);
+    Route::get('/12data', [DatakelembabanController::class, 'tabelawal']);
     Route::post('/createkaryawan', [DatakaryawanController::class, 'createdata']);
     Route::put('/updatekaryawan/{id_karyawan}', [DatakaryawanController::class, 'updatedata']);
     Route::get('/idkaryawan/{id_karyawan}', [DatakaryawanController::class, 'getidkaryawan']);

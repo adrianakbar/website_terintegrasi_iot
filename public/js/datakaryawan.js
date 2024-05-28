@@ -24,6 +24,18 @@ $(document).ready(function () {
             return; // Menghentikan proses jika ada field yang kosong
         }
 
+        // Memeriksa apakah nomor HP hanya terdiri dari angka
+        var hpPattern = /^\d+$/;
+        if (!hpPattern.test(noHp)) {
+            Swal.fire({
+                title: "Gagal",
+                text: "Nomor HP harus berupa angka",
+                icon: "warning",
+                confirmButtonColor: "#515646",
+            });
+            return; // Menghentikan proses jika nomor HP tidak valid
+        }
+
         // Memeriksa ketersediaan token CSRF
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
         if (!csrfToken) {
@@ -70,9 +82,7 @@ $(document).ready(function () {
             },
         });
     });
-});
 
-$(document).ready(function () {
     $(".delete-btn").click(function (e) {
         e.preventDefault();
         var id_karyawan = $(this).data("id"); // Mengambil nilai ID dari atribut data-id
@@ -124,9 +134,7 @@ $(document).ready(function () {
             }
         });
     });
-});
 
-$(document).ready(function () {
     $(".update-btn").click(function () {
         var id = $(this).data("id");
         $.get("/idkaryawan/" + id, function (data) {
@@ -146,7 +154,12 @@ $(document).ready(function () {
         var noHp = $("#updatenohp").val();
 
         // Periksa apakah nama atau tanggal kosong
-        if (nama === "" || tanggalMasuk === "" || alamat === "" || noHp === "") {
+        if (
+            nama === "" ||
+            tanggalMasuk === "" ||
+            alamat === "" ||
+            noHp === ""
+        ) {
             // Tampilkan Sweet Alert untuk error
             Swal.fire({
                 icon: "error",
@@ -155,6 +168,18 @@ $(document).ready(function () {
                 confirmButtonColor: "#515646",
             });
             return; // Berhenti eksekusi jika ada data yang kosong
+        }
+
+        // Memeriksa apakah nomor HP hanya terdiri dari angka
+        var hpPattern = /^\d+$/;
+        if (!hpPattern.test(noHp)) {
+            Swal.fire({
+                title: "Gagal",
+                text: "Nomor HP harus berupa angka",
+                icon: "warning",
+                confirmButtonColor: "#515646",
+            });
+            return; // Menghentikan proses jika nomor HP tidak valid
         }
 
         $.ajax({

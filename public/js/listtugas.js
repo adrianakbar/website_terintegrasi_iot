@@ -31,7 +31,7 @@ function createtugas() {
         success: function (response) {
             Swal.fire({
                 title: "Berhasil",
-                text: "Data karyawan berhasil ditambahkan",
+                text: "Tugas berhasil ditambahkan",
                 icon: "success",
                 showCancelButton: false, // Tidak menampilkan tombol Cancel
                 confirmButtonText: "OK", // Mengubah teks tombol konfirmasi menjadi "OK"
@@ -77,9 +77,16 @@ function deletetugas(id_tugas) {
                     "X-CSRF-TOKEN": csrfToken,
                 },
                 success: function (response) {
-                    console.log(response);
-                    // Refresh halaman setelah menghapus data
-                    location.reload();
+                    // Tampilkan pesan sukses
+                    Swal.fire({
+                        title: "Terhapus",
+                        text: "Tugas berhasil dihapus",
+                        icon: "success",
+                        confirmButtonColor: "#515646",
+                    }).then(() => {
+                        // Refresh halaman setelah penghapusan berhasil
+                        location.reload();
+                    });
                 },
                 error: function (response) {
                     console.error(response);
