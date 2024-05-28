@@ -95,7 +95,7 @@
                 <div class="row">
                     @foreach ($karyawan as $item)
                         <div class="col-md-4 mb-4">
-                            <div class="card card1" style="width: 18rem;">
+                            <div class="card card1" style="width: 21rem;">
                                 <img src="{{ asset('image/profile.png') }}" class="card-img-top mx-auto d-block"
                                     alt="...">
                                 <div class="card-body">
