@@ -91,19 +91,19 @@
                     <img src="{{ asset('image/profile.png') }}" alt="" width="200px" class="gambar">
                 </div>
                 <div class="col-md-7">
-                    <div class="alert">
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                {{ implode(', ', $errors->all()) }}
-                            </div>
-                        @endif
-                    </div>
                     <div class="formgantiprofil">
+                        <div class="alert">
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    {{ implode(', ', $errors->all()) }}
+                                </div>
+                            @endif
+                        </div>
                         <form action="" method="POST">
                             @csrf
                             <div class="row mb-3">

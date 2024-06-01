@@ -31,12 +31,12 @@
             var options = {
                 width: 500,
                 height: 250,
-                redFrom: 70,
+                redFrom: 20,
                 redTo: 100,
-                yellowFrom: 40,
-                yellowTo: 90,
+                // yellowFrom: 40,
+                // yellowTo: 90,
                 greenFrom: 0,
-                greenTo: 40,
+                greenTo: 20,
                 minorTicks: 5,
                 max: 100 // Set maximum value to 100%
             };
